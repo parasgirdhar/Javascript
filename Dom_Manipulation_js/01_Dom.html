@@ -1,0 +1,77 @@
+DOM (Document Object Model) ek programming interface hai jo HTML page ko tree structure (nodes) ki form me represent karta hai. JavaScript is tree ko read aur modify kar sakta hai — isi process ko DOM manipulation bolte hain.
+
+Soch lo:
+👉 HTML = structure
+👉 DOM = uska live version (JS ke through editable)
+
+ DOM Manipulation me kya kya hota hai?
+1. Elements ko select karna
+
+
+document.getElementById('id')
+document.getElementsByClassName('class')
+document.querySelector('.class')
+document.querySelectorAll('p')
+
+2. Content change karna
+
+element.innerText = "Hello"
+element.innerHTML = "<b>Hello</b>"
+
+3. Attributes change karna
+
+element.setAttribute('class', 'newClass')
+element.src = "image.jpg"
+
+
+4. Style change karna
+
+
+element.style.color = "red"
+element.style.backgroundColor = "yellow"
+
+
+
+5. New element create & add karna
+
+let newDiv = document.createElement('div')
+newDiv.innerText = "New Element"
+
+document.body.appendChild(newDiv)
+
+
+6. Element remove karna
+
+element.remove()
+
+
+7. Event handling (user actions)
+
+
+button.addEventListener('click', function() {
+  alert('Button clicked')
+})
+
+
+
+***************************  diagram  **********************************
+
+
+Document
+│
+└── html
+    │
+    ├── head
+    │   └── title
+    │
+    └── body
+        │
+        ├── h1
+        │    └── "Heading Text"
+        │
+        ├── p
+        │    └── "Paragraph Text"
+        │
+        └── div
+             ├── img
+             └── a
