@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <ul>
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+    </ul>
+    
+    <p  style="background-color: red;" id="title" class="gulu"> mera sara content <span style="display: none;">hidden</span> aha hai</p>
+    <h1>this is some content </h1>
+</body>
+</html>
+
+
+
+JavaScript ke DOM mein innerText aur textContent dono ka use kisi element ke text ko read ya set karne ke liye hota hai, lekin inke behavior mein important differences hain:
+
+🔹 1. innerText
+Ye visible text ko return karta hai (jo screen par dikhta hai).
+CSS styling ka effect leta hai (e.g. display: none ya visibility: hidden wala text include nahi hota).
+Browser rendering ko consider karta hai, isliye thoda slow ho sakta hai.
+Line breaks aur formatting ko bhi respect karta hai.
+
+
+<div id="test">
+  Hello
+  <span style="display:none">Hidden</span>
+</div>
+
+document.getElementById("test").innerText
+// Output: "Hello"
+
+
+
+🔹 2. textContent
+Ye poora text return karta hai, chahe wo visible ho ya hidden.
+CSS ka koi effect nahi hota.
+Ye fast hota hai kyunki rendering check nahi karta.
+Raw text deta hai, formatting ignore karta hai.
+
+document.getElementById("test").textContent
+// Output: "Hello Hidden"
+
+
+
+🔥 Main Difference Summary:
+Feature	innerText	textContent
+Visible text only	✅ Yes	❌ No (hidden bhi)
+CSS effect	✅ Yes	❌ No
+Performance	❌ Slow	✅ Fast
+Formatting	✅ Maintain	❌ Raw text
+
+✅ Kab kya use karein?
+innerText → jab aapko user ko dikhne wala text chahiye
+textContent → jab aapko pure DOM ka raw text chahiye (better performance ke liye) -->
+
+* also learned about innerhtml.......
+
+
+🔹 querySelector kya hai?
+
+document.querySelector() kisi bhi element ko CSS selector ke through select karta hai.
+
+👉 Ye first matching element return karta hai.
+
+1. ID se select karna
+document.querySelector("#myId")
+2. Class se select karna
+document.querySelector(".myClass")
+3. Tag se select karna
+document.querySelector("p")
+
+🔹 Important Points:
+Sirf pehla matching element return karta hai
+Agar kuch match nahi mila → null return karega
+CSS selectors jaisa hi syntax use hota hai
+
+
+
+
+
+*********************** querySelecetorAll ********************************
+
+📘 QuerySelectorAll Notes (DOM - JavaScript)
+🔹 1. Saare <li> elements ko select karna
+const temp = document.querySelectorAll("li");
+
+👉 Ye line DOM se saare <li> elements ko select karti hai
+👉 Result ek NodeList hota hai (array jaisa structure)
+
+🔹 2. NodeList kya hota hai?
+Ye ek collection (list) hoti hai elements ki
+Is case mein:
+NodeList(3) [li, li, li]
+
+👉 Matlab 3 <li> elements mile hain
+
+🔹 3. Index se element access karna
+temp[0]   // pehla <li>
+temp[1]   // doosra <li>
+temp[2]   // teesra <li>
+
+👉 Same tarah jaise array access karte ho
+
+🔹 4. Style change karna (specific element ka)
+temp[0].style.backgroundColor = "blue";
+
+👉 Pehle <li> ka background blue ho gaya
+
+temp[2].style.backgroundColor = "pink";
+
+👉 Teesre <li> ka background pink ho gaya
+
+
+
+    🔥 Quick Summary:
+querySelectorAll("li") → saare <li> elements select karta hai
+Return → NodeList (array jaisa)
+Access → index se (temp[0])
+Style change → .style.property use karke
+
+
+
+***************************** use with for-each *************************
+
+
+🔹 2. forEach ke saath use
+mylist.forEach((item) => {
+  item.style.background = "red";
+});
+🔍 Ye kaise kaam karta hai?
+➤ Step-by-step:
+querySelectorAll("li")
+👉 saare <li> elements le aata hai
+NodeList milta hai
+👉 jo array jaisa hota hai
+forEach lagate hain
+👉 har element par loop chalta hai
+item
+👉 current <li> ko represent karta hai
+item.style.background = "red"
+👉 har <li> ka background red ho jata hai
+
+
+ 🔥  Important Points:
+querySelectorAll ka result → NodeList
+NodeList par direct forEach use kar sakte hain
+Har element ko individually access karne ki zarurat nahi (jaise temp[0], temp[1])
+Code clean aur readable ho jata hai
