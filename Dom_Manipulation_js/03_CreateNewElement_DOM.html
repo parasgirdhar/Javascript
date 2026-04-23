@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DDOM</title>
+</head>
+<body>
+
+    
+    <div id="flavour">
+
+<div id="choco">choclate</div>
+<div id="pista">kaju-pista</div>
+<div id="orange">mango & orange</div>
+<div id="vanella">vanella bar</div>
+
+    </div>
+    
+
+    <div class="parent">
+        <div class="child">user</div>
+        <div class="child">developer</div>
+        <div class="child">client</div>
+    </div>
+
+    <script>
+
+const parent = document.querySelector(`.parent`)
+console.log(parent)
+console.log(parent.children) // accessing childrens of parent element ........
+// console.log(parent.children[2].innerHTML)  // accessing inside data of children element.......
+
+for(let i=0;i<parent.children.length;i++){
+console.log(parent.children[i].innerHTML)  // for loop for print all data in parent.children data....
+}
+parent.children[1].style.color="pink";
+
+console.log(parent.firstElementChild);  // to access first child....
+
+console.log(parent.lastElementChild);  // to access last child....
+
+
+
+
+// ****************** try to access parent through child ***************************
+
+
+
+const child = document.querySelector(`.child`)
+console.log(child);
+
+console.log(child.parentElement)   // accessing parent element through child
+
+const access = document.querySelectorAll(`parent`)
+console.log(access.children)
+
+
+
+// **************** try to acces id elements ***************
+
+const iceCream = document.querySelector(`#flavour`)
+
+console.log(iceCream)
+
+console.log(iceCream.children)
+console.log(iceCream.children[1])
+
+const fetch = document.querySelector(`#choco`)
+console.log(fetch)
+
+console.log(choco.parentElement);
+
+console.log(fetch.nextElementSibling);  // accessing next sibling.........
+
+console.log(parent.childNodes);    // Jab tumhe DOM ka full structure dekhna ho (including text nodes)
+console.log(iceCream.childNodes)  // Jab tumhe DOM ka full structure dekhna ho (including text nodes)
+
+
+// ************************************** create new element ***************************
+
+   const div = document.createElement(`div`)   // creating new div....
+       console.log(div)        
+
+     div.className=`main`  // used to set class on created div.....
+      div.id="paras"     // used to set id on created div....
+
+      div.setAttribute("title" , "create-element")  // set any attribute from here .....
+      div.setAttribute("p" , "vincoha")
+
+div.innerText="this is my content"  // another way too write .....
+
+
+const first = document.createTextNode("this is another content")     // this is content..creating text node
+        div.appendChild(first)       // it attach const first into div....
+     
+         document.body.appendChild(div)        // it show data in body and also attach div into body
+
+
+    </script>
+</body>
+</html>
