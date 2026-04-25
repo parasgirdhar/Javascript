@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<ul class="point">
+
+</ul>
+
+<script>
+
+function set(user){
+
+const li = document.createElement(`li`)
+li.innerHTML=`${user}`
+const mylist = document.querySelector(`.point`)
+mylist.appendChild(li)
+
+}
+set(`hello`)
+set(`java user`)
+
+
+// ********************************** Optimized way *************************************
+
+// ess vich jo li use ho rhy ty jo upar hoya sii dona da block scope alag alag hai dona da ek dujy nal koi lena dena nhi ...
+
+function user(para){
+const li = document.createElement(`li`)
+li.appendChild(document.createTextNode(para))  
+document.querySelector(`.point`).appendChild(li)
+}
+user(`springBoot`)
+user(`ruby`)
+
+
+// **************************** reaplce with *********************************
+
+const secondlang = document.querySelector(`li:nth-child(2)`)   // remember this...
+
+const changed = document.createElement(`changed`)
+changed.innerText=`mojo`
+
+secondlang.replaceWith(changed);
+
+// output =>
+
+
+// hello
+// mojo
+// springBoot
+// ruby
+
+
+// ******************* another way to Edit *********************************
+
+const firstli = document.querySelector(`li:first-child`)
+firstli.outerHTML=`<li>this is changed</li>`   // in these we need to write full outer portion...
+
+
+// output .....    // this is changed
+                   // mojo                            
+                       // springBoot
+                                // ruby
+
+
+
+
+    // ***************************** Remove Element ******************
+    
+    
+const lastli = document.querySelector(`li:last-child`)
+lastli.remove()
+
+
+
+// output =>
+
+
+// this is changed
+// mojo
+// springBoot
+
+
+</script>
+
+</body>
+</html>
