@@ -1,0 +1,36 @@
+body {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #000000;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.container {
+    background: #ffffff;
+    color: #333;
+    padding: 25px;
+    border-radius: 10px;
+    width: 300px;
+    margin: 100px auto;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+#results {
+    margin-top: 15px;
+    padding: 10px;
+    background: #f1f1f1;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
